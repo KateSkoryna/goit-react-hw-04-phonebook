@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Form } from 'formik';
 
-export const Form = styled.form`
+export const FormBox = styled(Form)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
