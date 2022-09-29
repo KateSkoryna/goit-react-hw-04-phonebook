@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Global } from '@emotion/react';
 import { GlobalStyles } from './GlobalStyles.styled';
@@ -10,7 +10,6 @@ import ContactList from 'components/ContactList';
 const STORAGE_KEY = 'contact-box';
 
 const App = () => {
-  const isMounted = useRef(false);
   const [contacts, setContacts] = useState([
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -27,10 +26,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (isMounted.current) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
-    }
-    isMounted.current = true;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = ({ name, number }) => {
